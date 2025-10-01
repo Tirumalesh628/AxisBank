@@ -1,10 +1,11 @@
 ﻿namespace AxisBank
 {
-    internal class Program
+    public class Bank
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Clerk clerk = new Clerk();
+            clerk.ClearWork();
         }
     }
 }
