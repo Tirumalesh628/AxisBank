@@ -24,19 +24,62 @@ namespace AxisBank
         static int i;
 
         Account[] accounts = new Account[100];
-       
+        Account acc;
 
         public void ClearWork()
         {  
             do
-            {  
+            {
+                
                 Console.WriteLine("Choose Option to perform\n1.Create Account\n2.Deposit\n3.Withdraw\n4.CheckBalance\n5.ShowAccountDetails\n6.Diaplay All Accounts\n0.To Close Work");
                 clerkwork=Convert.ToByte(Console.ReadLine());
                 if (clerkwork == 1) { CreateAccount(); Console.WriteLine(); }                
-                else if (clerkwork == 2) { Deposit(GetAccountDetailswithID()); Console.WriteLine(); }
-                else if (clerkwork == 3) { withdra(GetAccountDetailswithID()); Console.WriteLine(); }
-                else if (clerkwork == 4) { CheckBalance(GetAccountDetailswithID()); Console.WriteLine(); }
-                else if (clerkwork == 5) { AccountDetails(GetAccountDetailswithID()); Console.WriteLine(); }
+                else if (clerkwork == 2) {
+                    acc = GetAccountDetailswithID();
+                    if (acc != null)
+                    {
+                        
+                        Deposit(acc); Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("No account available with that ID.");
+                    }
+
+                    }
+                else if (clerkwork == 3) {
+                    acc = GetAccountDetailswithID();
+                    if (acc != null)
+                    {
+                        withdra(acc); Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("No account available with that ID.");
+                    }
+                    }
+                else if (clerkwork == 4) {
+                    acc = GetAccountDetailswithID();
+                    if (acc != null)
+                    {
+                        CheckBalance(acc); Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("No account available with that ID.");
+                    }
+                }
+                else if (clerkwork == 5) {
+                    acc = GetAccountDetailswithID();
+                    if (acc != null)
+                    {
+                        AccountDetails(acc); Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("No account available with that ID.");
+                    }
+                }
                 else if (clerkwork == 6) { GetAccountDetails(); Console.WriteLine(); }
                 else if (clerkwork == 0) { break; }
                 else Console.WriteLine("Choose correct Option");
@@ -110,20 +153,12 @@ namespace AxisBank
             int ID=Int32.Parse(Console.ReadLine());
             for (int i=0;i<accounts.Length;i++)
             {
-                if (accounts[i]!=null && accounts[i].AccountId == ID)
+                if (accounts[i] != null && accounts[i].AccountId == ID)
                 {
                     return accounts[i];
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("Account not found.. Enter correct Details");
-                    
-                    GetAccountDetailswithID();
-                    break;
-                }
-
-
+              
             }
             return null;
         }
