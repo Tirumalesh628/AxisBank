@@ -20,7 +20,7 @@ namespace AxisBank
 
         public void AccountDetails()
         {
-            Console.WriteLine("{0} Axis Bank account Created Succcessfully with Below details.",Name);
+      
             Console.WriteLine("Account Number:{0}",AccountId);
             Console.WriteLine("Name:{0}",Name);
             Console.WriteLine("Address:{0}",Address);
